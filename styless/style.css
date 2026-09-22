@@ -458,7 +458,7 @@ gap: 20px;
 }
 .header-cart-contaainer{
     border: 1px solid var(--black);
-    width: clamp(180px,18vw,250px) ;
+    width: clamp(160px,18vw,250px) ;
  background-color: var(--black);
     height: auto;
     padding-bottom: 20px;
@@ -467,7 +467,7 @@ gap: 20px;
 }
 .header-cart-contaainer img{
    
-    width: clamp(180px,18vw,250px) ;
+    width: clamp(160px,18vw,250px) ;
     height: auto;
     border-radius: 10px 10px  0 0px ;
 }
