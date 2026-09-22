@@ -417,7 +417,7 @@ gap: 20px;
     padding-top: 20px;
 }
 .login-text p{
-    width: 850px;
+    width: clamp(350px,67vw,900px);
 }
 .shop-container{
     padding-top: 70px;
@@ -614,8 +614,13 @@ border-radius: 10px 10px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
-    .footer {
-        text-align: center;
+.login-text {
+    text-align: center;
+    width: 90%;
+    padding-top: 60px;
+}
+    .footer{
+      
     }
     .footer .row > div {
         margin-bottom: 40px;
@@ -662,4 +667,15 @@ border-radius: 10px 10px;
 .category-gender-header{
     padding-left: 20px;
 }
+}
+@media (max-width: 360px) {
+
+    .Discount p {
+        font-size: 8px;
+    }
+
+    .Discount del {
+        font-size: 8px;
+    }
+
 }
