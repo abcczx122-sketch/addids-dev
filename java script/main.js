@@ -1646,6 +1646,7 @@ function showWishlist(){
 
     wishlistItems.innerHTML = "";
 
+
     if(wishlist.length == 0){
 
         wishlistTitle.innerHTML = "YOUR WISHLIST IS EMPTY";
@@ -1655,6 +1656,7 @@ function showWishlist(){
         return;
 
     }
+
 
     wishlistTitle.innerHTML = "YOUR WISHLIST";
 
@@ -1666,6 +1668,7 @@ function showWishlist(){
         let product = document.createElement("div");
 
         product.className = "wishlist-product";
+
 
         product.innerHTML = `
 
