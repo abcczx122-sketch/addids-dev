@@ -1579,6 +1579,16 @@ for(let i = 0; i < productLinks.length; i++){
 
         let originalImage = image.dataset.original;
 
+        if(originalImage.startsWith("image/")){
+
+            originalImage = originalImage;
+
+        }else{
+
+            originalImage = "image/" + originalImage.split("/").pop();
+
+        }
+
         let found = false;
 
         for(let x = 0; x < wishlist.length; x++){
@@ -1685,6 +1695,12 @@ function showWishlist(){
                 <p>${wishlist[i].price}</p>
 
                 <p>Quantity: ${wishlist[i].quantity}</p>
+
+                <a href="YOUR-VODAFONE-CASH-LINK" class="vodafone-cash">
+
+                    Vodafone Cash
+
+                </a>
 
                 <button class="delete-wishlist">
 
