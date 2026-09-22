@@ -1549,3 +1549,174 @@ else{
         showProducts();
     }
 }
+let productLinks = document.querySelectorAll(".link-prodect");
+
+for(let i = 0; i < productLinks.length; i++){
+
+    let image = productLinks[i].querySelector(".image-product");
+
+    if(image){
+
+        image.dataset.original = image.getAttribute("src");
+
+    }
+
+    productLinks[i].onclick = function(){
+
+        let wishlist = JSON.parse(sessionStorage.getItem("wishlist"));
+
+        if(wishlist == null){
+
+            wishlist = [];
+
+        }
+
+        let image = productLinks[i].querySelector(".image-product");
+
+        let title = productLinks[i].querySelector(".title-product");
+
+        let price = productLinks[i].querySelector(".price-product");
+
+        let originalImage = image.dataset.original;
+
+        let found = false;
+
+        for(let x = 0; x < wishlist.length; x++){
+
+            if(wishlist[x].title == title.innerHTML){
+
+                wishlist[x].quantity++;
+
+                found = true;
+
+                break;
+
+            }
+
+        }
+
+        if(found == false){
+
+            wishlist.push({
+
+                image: originalImage,
+
+                title: title.innerHTML,
+
+                price: price.innerHTML,
+
+                quantity: 1
+
+            });
+
+        }
+
+        sessionStorage.setItem(
+            "wishlist",
+            JSON.stringify(wishlist)
+        );
+
+    }
+
+}
+
+
+let wishlistItems = document.getElementById("wishlistItems");
+
+let wishlistTitle = document.getElementById("wishlistTitle");
+
+let wishlistText = document.getElementById("wishlistText");
+
+
+function showWishlist(){
+
+    if(!wishlistItems){
+
+        return;
+
+    }
+
+    let wishlist = JSON.parse(sessionStorage.getItem("wishlist"));
+
+    if(wishlist == null){
+
+        wishlist = [];
+
+    }
+
+    wishlistItems.innerHTML = "";
+
+    if(wishlist.length == 0){
+
+        wishlistTitle.innerHTML = "YOUR WISHLIST IS EMPTY";
+
+        wishlistText.style.display = "block";
+
+        return;
+
+    }
+
+    wishlistTitle.innerHTML = "YOUR WISHLIST";
+
+    wishlistText.style.display = "none";
+
+
+    for(let i = 0; i < wishlist.length; i++){
+
+        let product = document.createElement("div");
+
+        product.className = "wishlist-product";
+
+        product.innerHTML = `
+
+            <div class="wishlist-image">
+
+                <img src="${wishlist[i].image}" alt="">
+
+            </div>
+
+            <div class="wishlist-info">
+
+                <h3>${wishlist[i].title}</h3>
+
+                <p>${wishlist[i].price}</p>
+
+                <p>Quantity: ${wishlist[i].quantity}</p>
+
+                <button class="delete-wishlist">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        wishlistItems.appendChild(product);
+
+
+        let deleteButton =
+        product.querySelector(".delete-wishlist");
+
+
+        deleteButton.onclick = function(){
+
+            wishlist.splice(i, 1);
+
+            sessionStorage.setItem(
+                "wishlist",
+                JSON.stringify(wishlist)
+            );
+
+            showWishlist();
+
+        }
+
+    }
+
+}
+
+
+showWishlist();
