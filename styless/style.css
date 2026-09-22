@@ -671,7 +671,7 @@ border-radius: 10px 10px;
 @media (max-width: 360px) {
 
     .Discount p {
-        font-size: 8px;
+        font-size: 6px;
     }
 
     .Discount del {
